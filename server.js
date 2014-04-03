@@ -2,9 +2,24 @@ var http = require('http');
 var fs = require('fs');
 
 var server = http.createServer(function(req, res){
-	res.writeHead(200, {'Content-Type': 'text/html'});
-	fs.readFile('./test.txt', function (err, data){
+	var url = req.url;
+	if (url === '/'){
+		url = '/index.html';
+	}
+
+	console.log("URL: " + url);
+
+	var filepath = __dirname + "./public" + url;
+
+	res	.writeHead(200, {'Content-Type': 'text/html'});
+	fs.readFile(filepath, function (err, data){
+		if (err){
+			console.log("error: "+ err);
+			res.end("error");
+		}
+		else {
 		res.end(data);
+		}
 	})
 });
 
