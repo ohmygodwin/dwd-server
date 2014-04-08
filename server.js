@@ -1,23 +1,34 @@
 var http = require('http');
 var fs = require('fs');
 
+console.log('Starting server');
+
+function getFilepath(url){
+  var filepath = require('url').parse(url).pathname;
+
+  if (filepath === '/') {
+    filepath = '/index.html';
+  }
+
+  filepath = __dirname + '/public' + filepath;
+
+  console.log('Getting filepath from url: ' + url + '. Filepath: ' + filepath);
+  return filepath;
+}
+
 var server = http.createServer(function(req, res){
-	var url = req.url;
-	if (url === '/'){
-		url = '/index.html';
-	}
 
-	console.log("URL: " + url);
+	var filepath = getFilepath(req.url);
 
-	var filepath = __dirname + "./public" + url;
-
-	res	.writeHead(200, {'Content-Type': 'text/html'});
+	
 	fs.readFile(filepath, function (err, data){
 		if (err){
 			console.log("error: "+ err);
-			res.end("error");
+			handleError(err, res);
 		}
 		else {
+		res	.writeHead(200, {'Content-Type': 'text/html'});
+		res.write(data);	
 		res.end(data);
 		}
 	})
