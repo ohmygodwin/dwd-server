@@ -1,5 +1,5 @@
 var express = require('express');
-var expressHbs = require('express-handlebars');
+var expressHbs = require('express3-handlebars');
 var handlebars = expressHbs.create();
 var app = express();
 
@@ -8,7 +8,7 @@ app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res){
 
-	res.render("hey, y'all");
+	res.render('index');
 });
 
 app.use('/public', express.static('public'));
