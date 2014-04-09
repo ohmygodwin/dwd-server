@@ -10,11 +10,18 @@ function getFilepath(url){
     filepath = '/index.html';
   }
 
-  filepath = __dirname + '/public' + filepath;
+  filepath = __dirname + filepath;
 
   console.log('Getting filepath from url: ' + url + '. Filepath: ' + filepath);
   return filepath;
 }
+
+function handleError(err, res){
+  res.writeHead(500, {'Content-Type': 'text/html'});
+  res.write('Handled Error: ' + err);
+  res.end();
+}
+
 
 var server = http.createServer(function(req, res){
 
