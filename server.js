@@ -34,8 +34,8 @@ var server = http.createServer(function(req, res){
 			handleError(err, res);
 		}
 		else {
-		res	.writeHead(200, {'Content-Type': 'text/html'});
-		res.write(data);	
+		res.writeHead(200, {'Content-Type': 'text/html'});
+		//res.write(data);	
 		res.end(data);
 		}
 	})
