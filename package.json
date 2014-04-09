@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ohmygodwin/dwd-server/issues"
   },
-  "homepage": "https://github.com/ohmygodwin/dwd-server"
+  "homepage": "https://github.com/ohmygodwin/dwd-server",
+  "dependencies": {
+    "express": "~4.0.0"
+  }
 }
