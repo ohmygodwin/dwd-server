@@ -27,6 +27,11 @@ app.get('/tutorial/:tutorialName', function(req, res){
 	res.render('tutorial', data);
 });
 
+app.get('/browse', function(req, res){
+	var data = {planet: "earth"};
+	res.render('browse', data);
+});
+
 app.use('/public', express.static('public'));
 
 app.listen(5000);
