@@ -34,4 +34,4 @@ app.get('/browse', function(req, res){
 
 app.use('/public', express.static('public'));
 
-app.listen(5000);
+app.listen(process.env.PORT || 5000);
