@@ -21,6 +21,10 @@ app.get('/', function(req, res){
 
 app.get('/tutorial/:tutorialName', function(req, res){
 	var tutorialName = req.params.tutorialName;
+
+	//var id = req.query.id;
+	//res.render("people", {id: id})
+
 	//look up data about tutorialName
 	var data = tutorialData[tutorialName];
 
@@ -32,6 +36,19 @@ app.get('/browse', function(req, res){
 	res.render('browse', data);
 });
 
+app.get('/login', function(req, res){
+	res.render("login");
+});
+
+app.post('/post', function(req, res){
+	
+});
+
 app.use('/public', express.static('public'));
 
 app.listen(process.env.PORT || 5000);
+
+
+
+
+
