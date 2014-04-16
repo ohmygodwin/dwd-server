@@ -10,12 +10,12 @@ app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 app.get('/', function(req, res){
-	// var data = {planet: "earth"};
-	// var planetNames =  [
-	// 'mars',
-	// 'venus'
-	// ];
-	// data.planetNames = planetNames;
+	var data = {planet: "earth"};
+	var planetNames =  [
+	'mars',
+	'venus'
+	];
+	data.planetNames = planetNames;
 	res.render('index', data);
 });
 
