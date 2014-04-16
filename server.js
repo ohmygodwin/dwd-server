@@ -1,5 +1,9 @@
 var express = require('express');
 var expressHbs = require('express3-handlebars');
+var bodyParser = require('body-parser');
+
+//app.use(bodyParser());
+
 var handlebars = expressHbs.create({
 	defaultLayout: 'main'
 });
@@ -40,8 +44,8 @@ app.get('/login', function(req, res){
 	res.render("login");
 });
 
-app.post('/post', function(req, res){
-	
+app.post('/login', function(req, res){
+	res.render('login');
 });
 
 app.use('/public', express.static('public'));

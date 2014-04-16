@@ -19,6 +19,7 @@
   "homepage": "https://github.com/ohmygodwin/dwd-server",
   "dependencies": {
     "express": "~4.0.0",
-    "express3-handlebars": "~0.5.0"
+    "express3-handlebars": "~0.5.0",
+    "body-parser": "~1.0.2"
   }
 }
