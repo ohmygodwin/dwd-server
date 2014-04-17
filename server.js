@@ -1,14 +1,15 @@
 var express = require('express');
-var expressHbs = require('express3-handlebars');
 var bodyParser = require('body-parser');
+var expressHbs = require('express3-handlebars');
 
-//app.use(bodyParser());
+var app = express();
+app.use(bodyParser());
 
 var handlebars = expressHbs.create({
 	defaultLayout: 'main'
 });
 var tutorialData = require('./tutorialDataFile');
-var app = express();
+
 
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
@@ -41,16 +42,39 @@ app.get('/browse', function(req, res){
 });
 
 app.get('/login', function(req, res){
-	res.render("login");
+	res.render('login');
 });
 
+function passwordIsValid(user, pass) {
+if (user === "kate" && pass === "<3") {
+	return true;
+} else {
+	return false;
+}
+
+}
+
 app.post('/login', function(req, res){
+	var username = req.body['username'];
+	var password = req.body['password'];
+
+	if (passwordIsValid(username, password)){
+		res.render('login', {loggedIn: true})
+	} else {
+		res.render('login', {failedLogin: true})
+	}
+
 	res.render('login');
 });
 
 app.use('/public', express.static('public'));
 
 app.listen(process.env.PORT || 5000);
+
+
+
+
+
 
 
 

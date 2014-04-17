@@ -1,9 +1,19 @@
 login!!!
 <br>
 
+{{#if loggedIn}}
+	logged in!!!
+{{/if}}
+
+{{#if failedLogin}}
+	not logged in!!!!
+{{/if}}
+
 <form action="/login" method="post">
 
-<input type='text' name='username'>
+username: <input type='text' name='username' placeholder="enter name"><br>
+password: <input type='text' name='password' placeholder="enter password"><br>
+
 
 <button type='submit'>submit</button>
 
