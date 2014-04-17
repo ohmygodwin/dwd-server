@@ -1,9 +1,13 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var expressHbs = require('express3-handlebars');
+var cookieParser = require('cookie-parser');
+var expressSession = require('express-session');
 
 var app = express();
 app.use(bodyParser());
+app.use(cookieParser());
+app.use(expressSession({secret: 'kisses'}));
 
 var handlebars = expressHbs.create({
 	defaultLayout: 'main'
@@ -66,6 +70,17 @@ app.post('/login', function(req, res){
 
 	res.render('login');
 });
+
+app.get('/set_session', function(req, res){
+	req.session.username = req.query.username;
+
+	res.send("session was set");
+	});
+
+app.get('/see_session', function(req, res){
+
+	res.send("session.username: " + req.session.username);
+	});
 
 app.use('/public', express.static('public'));
 
