@@ -89,10 +89,32 @@ app.use('/public', express.static('public'));
 
 var db;
 
+app.get('/database', function(req, res){
+	var username = req.query.username;
+	var status = req.query.status;
+
+	var collection = db.collection('test_insert');
+
+	collection.insert({username: username, status: status}, function(err, count){
+		if (err){
+			console.log("error: " + err);
+		}
+
+		res.send('the count is: ' + count);
+	});
+});
+
+app.get('/read_database', function(req, res){
+	var collection = db.collection('test_insert');
+	
+});
+
 MongoClient.connect(mongoUrl, function(err, _db){
 	if (err) {
 		console.log("error: " + err);
-	}
+	}	
+
+	db = _db;
 
 	console.log("connected to mongo!!!");
 	app.listen(process.env.PORT || 5000);
