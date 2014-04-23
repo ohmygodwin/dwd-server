@@ -4,6 +4,9 @@ var expressHbs = require('express3-handlebars');
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
 
+var MongoClient = require('mongodb').MongoClient;
+var mongoUrl = "mongodb://kate:Pass245890@ds047437.mongolab.com:47437/funguys";
+
 var app = express();
 app.use(bodyParser());
 app.use(cookieParser());
@@ -84,7 +87,17 @@ app.get('/see_session', function(req, res){
 
 app.use('/public', express.static('public'));
 
-app.listen(process.env.PORT || 5000);
+var db;
+
+MongoClient.connect(mongoUrl, function(err, _db){
+	if (err) {
+		console.log("error: " + err);
+	}
+
+	console.log("connected to mongo!!!");
+	app.listen(process.env.PORT || 5000);
+});
+
 
 
 
