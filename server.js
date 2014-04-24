@@ -105,8 +105,20 @@ app.get('/database', function(req, res){
 });
 
 app.get('/read_database', function(req, res){
+	var username = req.query.username;
+
 	var collection = db.collection('test_insert');
-	
+
+	collection.find({username: username}).toArray(function(err, items){
+		
+		if (items.length > 0) { 
+			var item = items[0];
+			res.send("The user is: " + item.status);
+		} else {
+			res.send("nothing :(");
+		}
+	});
+
 });
 
 MongoClient.connect(mongoUrl, function(err, _db){
