@@ -23,6 +23,7 @@
     "body-parser": "~1.0.2",
     "cookie-parser": "~1.0.1",
     "express-session": "~1.0.2",
-    "mongodb": "~1.4.2"
+    "mongodb": "~1.4.2",
+    "connect-mongo": "git://github.com/kcbanner/connect-mongo#master"
   }
 }

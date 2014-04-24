@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var expressHbs = require('express3-handlebars');
 var cookieParser = require('cookie-parser');
 var expressSession = require('express-session');
+var MongoStore = require('connect-mongo')(expressSession);
 
 var MongoClient = require('mongodb').MongoClient;
 var mongoUrl = "mongodb://kate:Pass245890@ds047437.mongolab.com:47437/funguys";
@@ -10,7 +11,10 @@ var mongoUrl = "mongodb://kate:Pass245890@ds047437.mongolab.com:47437/funguys";
 var app = express();
 app.use(bodyParser());
 app.use(cookieParser());
-app.use(expressSession({secret: 'kisses'}));
+app.use(expressSession({
+	secret: 'kisses', 
+	store: new MongoStore({url: mongoUrl})
+}));
 
 var handlebars = expressHbs.create({
 	defaultLayout: 'main'
