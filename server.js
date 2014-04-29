@@ -42,9 +42,25 @@ app.get('/tutorial/:tutorialName', function(req, res){
 	//res.render("people", {id: id})
 
 	//look up data about tutorialName
-	var data = tutorialData[tutorialName];
+	//var data = tutorialData[tutorialName];
 
-	res.render('tutorial', data);
+
+
+	var tutorials = req.query.tutorials;
+
+	var collection = db.collection('tutorials');
+
+	collection.find({tutorials: tutorials}).toArray(function(err, items){
+		
+		if (items.length > 0) { 
+			var item = items[0];
+			res.render('tutorial', items);
+		} else {
+			res.send("nothing :(");
+		}
+	});
+
+	//res.render('tutorial', data);
 });
 
 app.get('/browse', function(req, res){
