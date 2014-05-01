@@ -8,6 +8,8 @@ var MongoStore = require('connect-mongo')(expressSession);
 var MongoClient = require('mongodb').MongoClient;
 var mongoUrl = "mongodb://kate:Pass245890@ds047437.mongolab.com:47437/funguys";
 
+var cloudinary = require('cloudinary');
+
 var app = express();
 app.use(bodyParser());
 app.use(cookieParser());
@@ -20,6 +22,12 @@ var handlebars = expressHbs.create({
 	defaultLayout: 'main'
 });
 var tutorialData = require('./tutorialDataFile');
+
+cloudinary.config({ 
+  cloud_name: 'df28qohur', 
+  api_key: '282897893732337', 
+  api_secret: 'MmdlYxlOmozAjH4sQZmNvPT78gs' 
+});
 
 
 app.engine('handlebars', handlebars.engine);
@@ -50,11 +58,11 @@ app.get('/tutorial/:tutorialName', function(req, res){
 
 	var collection = db.collection('tutorials');
 
-	collection.find({tutorials: tutorials}).toArray(function(err, items){
+	collection.find({}).toArray(function(err, items){
 		
 		if (items.length > 0) { 
 			var item = items[0];
-			res.render('tutorial', items);
+			res.render('tutorial', {objects: items});
 		} else {
 			res.send("nothing :(");
 		}
