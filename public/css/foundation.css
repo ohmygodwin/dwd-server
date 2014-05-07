@@ -1651,10 +1651,14 @@ meta.foundation-mq-topbar {
         left: 100%; }
 
 
-  .top-bar-section {
-    padding-top: 80;
+  .top-bar {
     border-bottom: 5px solid #333;
+    padding-left: 100px;
+    padding-right: 105px;
+  }
 
+  .top-bar-section {
+    padding-top: 50px;
   }
 
   .no-js .top-bar-section ul li:hover > a {
