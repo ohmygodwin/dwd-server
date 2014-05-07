@@ -8,7 +8,7 @@ var MongoStore = require('connect-mongo')(expressSession);
 var MongoClient = require('mongodb').MongoClient;
 var mongoUrl = "mongodb://kate:Pass245890@ds047437.mongolab.com:47437/funguys";
 
-var cloudinary = require('cloudinary');
+//var cloudinary = require('cloudinary');
 
 var app = express();
 app.use(bodyParser());
@@ -23,11 +23,11 @@ var handlebars = expressHbs.create({
 });
 var tutorialData = require('./tutorialDataFile');
 
-cloudinary.config({ 
-  cloud_name: 'df28qohur', 
-  api_key: '282897893732337', 
-  api_secret: 'MmdlYxlOmozAjH4sQZmNvPT78gs' 
-});
+// cloudinary.config({ 
+//   cloud_name: 'df28qohur', 
+//   api_key: '282897893732337', 
+//   api_secret: 'MmdlYxlOmozAjH4sQZmNvPT78gs' 
+// });
 
 
 app.engine('handlebars', handlebars.engine);
