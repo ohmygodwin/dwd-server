@@ -1,4 +1,4 @@
-login!!!
+
 <br>
 
 {{#if loggedIn}}
@@ -9,7 +9,7 @@ login!!!
 	not logged in!!!!
 {{/if}}
 
-<form action="/login" method="post">
+<!-- <form action="/login" method="post">
 
 username: <input type='text' name='username' placeholder="enter name"><br>
 password: <input type='text' name='password' placeholder="enter password"><br>
@@ -17,4 +17,29 @@ password: <input type='text' name='password' placeholder="enter password"><br>
 
 <button type='submit'>submit</button>
 
+</form> -->
+
+<form>
+	<div class="row">
+		<div class="large-6 columns">
+			<div class="panel">
+				<h5>login</h5>
+		  
+		  <div class="row">
+		    <div class="large-12 columns">
+		      <label>username</label>
+		      <input type="text" name='username' placeholder="enter name" />
+		    </div>
+		</br>
+
+		<div class="large-12 columns">
+		      <label>password</label>
+		      <input type="text" name='password' placeholder="enter password" />
+		    </div>
+		  </div>
+
+		  <button type='submit'>submit</button>
+		 
+		</div>
+	</div>
 </form>

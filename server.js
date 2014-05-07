@@ -62,7 +62,7 @@ app.get('/tutorial/:tutorialName', function(req, res){
 		
 		if (items.length > 0) { 
 			var item = items[0];
-			res.render('tutorial', {objects: items});
+			res.render('tutorial', items);
 		} else {
 			res.send("nothing :(");
 		}
