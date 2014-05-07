@@ -5069,3 +5069,10 @@ th.hide-for-touch {
 
 .touch th.show-for-touch {
   display: table-cell !important; }
+
+body {
+    background: url("/public/background.png") repeat;
+
+    /*background: url("./public/background.png") repeat fixed;*/
+
+  }
